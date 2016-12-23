@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <table sqlname="user">
 	
-	<operation name="insertUser">
+	<operation name="insertUser" insertReturnPK="true">
+		<description>添加用户</description>
+		<sql>
+			insert into user
+			(name, age, password)
+			values(?,?,?)
+		</sql>
+		<sqlmap>
+			insert into user
+				(name, age, password)
+			values(#{name}, #{age}, #{password})
+		</sqlmap>		
+	</operation>
+	
+	<operation name="batchInsertUser">
 		<description>添加用户</description>
 		<sql>
 			insert into user
